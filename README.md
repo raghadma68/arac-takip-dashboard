@@ -1,58 +1,103 @@
 # 🚗 Arac Takip Dashboard
-
 A web-based dashboard for monitoring and controlling a robot/vehicle.  
-This project combines a **React** frontend with a **Python backend** to provide real-time control, status visualization, and an easy-to-use interface.
+This project includes a React frontend and a Python backend, providing real-time control, sensor data display, and a clean user-friendly interface.
 
 ---
 
 ## 🌟 Features
-
-- 🔹 Interactive web dashboard built with React  
-- 🔹 Robot/vehicle control panel (via backend API)  
-- 🔹 Live status & basic telemetry view  
-- 🔹 Simple, clean UI for controlling and monitoring  
-- 🔹 Easy to extend with new features (maps, logs, etc.)
+- Interactive React dashboard UI  
+- Real-time robot/vehicle control panel  
+- Live sensor & telemetry display  
+- Minimal and responsive interface  
+- Simple backend API for hardware communication  
+- Easy to extend (maps, logs, streaming, etc.)
 
 ---
 
 ## 🏗 Project Structure
-
-```bash
 arac-takip-dashboard/
-├─ public/                  # Static assets (HTML, icons, manifest, etc.)
-├─ src/                     # React frontend source code
-│  ├─ App.js                # Main dashboard component
-│  ├─ App.css               # Styling for the dashboard
-│  ├─ index.js              # React entry point
-│  └─ ...                   # Other React components & utilities
-├─ robot-control-backend/   # Python backend for robot control
-│  ├─ static/               # Static files (HTML, JS, CSS) for backend UI
-│  └─ schemas/              # Python schemas / models
-├─ package.json             # Frontend dependencies and scripts
-├─ craco.config.js          # CRA configuration override (if used)
-└─ README.md                # You are here 🚀
-🛠 Tech Stack
+- public/  
+- src/  
+  - App.js  
+  - App.css  
+  - index.js  
+- robot-control-backend/  
+  - static/  
+  - schemas/  
+  - main.py (if used)  
+- package.json  
+- craco.config.js  
+- README.md  
 
-Frontend:
+---
 
-React
+# 🚀 Getting Started
 
-JavaScript
+## 1️⃣ Clone the Repository
+git clone https://github.com/raghadma68/arac-takip-dashboard.git  
+cd arac-takip-dashboard  
 
-HTML, CSS
+---
 
-Backend:
+# 🖥️ Frontend (React) Setup
 
-Python (robot-control-backend)
+## 2️⃣ Install Dependencies
+npm install
 
-Tools:
+## 3️⃣ Run the Dashboard
+npm start  
+Dashboard URL: http://localhost:3000
 
-Git & GitHub
+---
 
-VS Code
+# 🐍 Backend (Python) Setup
 
+Folder path: robot-control-backend/
 
-🚀 Getting Started
-1️⃣ Clone the repository
-git clone https://github.com/raghadma68/arac-takip-dashboard.git
-cd arac-takip-dashboard
+## 1️⃣ Navigate to backend
+cd robot-control-backend
+
+## 2️⃣ Create virtual environment
+python -m venv venv
+
+### Activate (Windows)
+venv\Scripts\activate
+
+### Activate (Mac/Linux)
+source venv/bin/activate
+
+## 3️⃣ Install backend dependencies
+pip install -r requirements.txt  
+أو  
+pip install flask
+
+## 4️⃣ Run backend
+python main.py  
+Backend URL: http://localhost:5000
+
+---
+
+# 🔗 Connecting Frontend & Backend
+Make sure API URLs inside React match your backend URL.  
+Example: http://localhost:5000/api/command
+
+---
+
+## 📚 Future Improvements
+- Add real-time map tracking  
+- Add joystick controller  
+- Add camera streaming  
+- Add WebSocket communication  
+- Add logs & error notifications  
+- Improve UI/UX  
+
+---
+
+## 👩‍💻 Author
+**Ragad Mansour**  
+Software Engineering Student  
+Interested in web development, robotics, Arduino, and building real-world systems.
+
+---
+
+⭐ If you like the project, give it a star on GitHub! ⭐
