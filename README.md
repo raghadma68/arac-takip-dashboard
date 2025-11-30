@@ -1,95 +1,82 @@
-# 🚗 Arac Takip Dashboard
+rac Takip Dashboard
 
-A web-based dashboard for monitoring and controlling a robot/vehicle.  
-It includes a **React frontend** and a **Python backend**, providing real-time control, sensor visualization, and a clean user interface.
+A web-based dashboard for monitoring and controlling a robot/vehicle.
+This project includes a React frontend and a Python backend.
 
----
+Features
 
-## 🌟 Features
-• Interactive React dashboard  
-• Real-time robot/vehicle control  
-• Live sensor & telemetry display  
-• Modern and responsive UI  
-• Simple backend API for communication  
-• Easy to extend (maps, logs, camera, WebSocket, etc.)
+Dashboard UI built with React
 
----
+Robot/vehicle control
 
-## 🏗 Project Structure
-arac-takip-dashboard  
-• public/ (static files)  
-• src/ (React source code)  
-  - App.js  
-  - App.css  
-  - index.js  
-• robot-control-backend/ (Python backend)  
-  - static/  
-  - schemas/  
-  - main.py  
-• package.json  
-• craco.config.js  
-• README.md  
+Live sensor data
 
----
+Clean and simple structure
 
-# 🚀 Frontend Setup (React)
+Project Structure
 
-### 1. Clone the repository  
-git clone https://github.com/raghadma68/arac-takip-dashboard.git  
+arac-takip-dashboard
+• public/
+• src/
+• robot-control-backend/
+• package.json
+• craco.config.js
+• README.md
+
+🚀 Frontend Setup
+1. Clone the project
+git clone https://github.com/raghadma68/arac-takip-dashboard.git
 cd arac-takip-dashboard
 
-### 2. Install dependencies  
+2. Install dependencies
 npm install
 
-### 3. Start the React app  
-npm start  
-Dashboard runs at: http://localhost:3000
+3. Start the React app
+npm start
 
----
 
-# 🐍 Backend Setup (Python)
+Dashboard runs at:
+http://localhost:3000
 
-### 1. Go to backend folder  
+🐍 Backend Setup
+1. Go to backend folder
 cd robot-control-backend
 
-### 2. Create virtual environment  
+2. Create virtual environment
 python -m venv venv
 
-### 3. Activate the environment  
-Windows: venv\Scripts\activate  
-Mac/Linux: source venv/bin/activate
+3. Activate it
 
-### 4. Install backend requirements  
-pip install -r requirements.txt  
-or install manually (example): pip install flask
+Windows:
 
-### 5. Run the backend  
-python main.py  
-Backend runs at: http://localhost:5000
+venv\Scripts\activate
 
----
 
-# 🔗 Connecting Frontend & Backend
-Make sure the API URLs inside React match your backend URL.  
-Example: http://localhost:5000/api/command
+Mac/Linux:
 
----
+source venv/bin/activate
 
-## 📚 Future Improvements
-• Real-time map tracking  
-• Joystick controller  
-• Camera streaming  
-• WebSocket live data  
-• Logs & notifications  
-• Improved UI/UX  
+4. Install backend packages
+pip install -r requirements.txt
 
----
 
-## 👩‍💻 Author
-**Ragad Mansour**  
-Software Engineering Student  
-Interested in web development, robotics, and Arduino projects.
+or
 
----
+pip install flask
 
-⭐ If you like this project, give it a star on GitHub! ⭐
+5. Run backend
+python main.py
+
+
+Backend runs at:
+http://localhost:5000
+
+Connecting Frontend & Backend
+
+Make sure your frontend uses the correct API URL:
+http://localhost:5000/api/command
+
+Author
+
+Ragad Mansour
+Software Engineering Student
