@@ -1,0 +1,521 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Left Sidebar */
+.left-sidebar {
+    width: 80px;
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    border-right: 1px solid #333;
+}
+
+.logo {
+    
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.nav-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.nav-item {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.nav-item:hover {
+    background: #333;
+    color: #fff;
+}
+
+.nav-item.active {
+    background: #e74c3c;
+    color: #fff;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #0a0a0a;
+}
+
+/* Map Container */
+.map-container {
+    flex: 1;
+    position: relative;
+    background: #1a1a1a;
+    margin: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.live-indicator {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #e74c3c;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.map-area {
+    width: 100%;
+    height: 100%;
+    background: #2a2a2a;
+    position: relative;
+}
+
+#mapCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+.timer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.timer .separator {
+    color: #e74c3c;
+    margin: 0 10px;
+}
+
+.timer-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #999;
+    margin-top: 5px;
+}
+
+/* Bottom Controls */
+.bottom-controls {
+    height: 300px;
+    display: flex;
+    gap: 20px;
+    padding: 0 20px 20px;
+}
+
+.gauge-container, .radar-container {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.gauge-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.control-panel {
+    flex: 1;
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 15px;
+    width: 200px;
+}
+
+.control-btn {
+    background: #333;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #999;
+}
+
+.control-btn:hover {
+    background: #444;
+    color: #fff;
+}
+
+.control-btn span {
+    font-size: 10px;
+    text-align: center;
+}
+
+.main-control {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.joystick {
+    width: 150px;
+    height: 150px;
+    border: 3px solid #333;
+    border-radius: 50%;
+    position: relative;
+    background: #222;
+    cursor: pointer;
+}
+
+.joystick-handle {
+    width: 40px;
+    height: 40px;
+    background: #666;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease;
+}
+
+.main-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.main-btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-btn {
+    background: #27ae60;
+    color: white;
+}
+
+.start-btn:hover {
+    background: #2ecc71;
+}
+
+.reset-btn {
+    background: #e74c3c;
+    color: white;
+}
+
+.reset-btn:hover {
+    background: #c0392b;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+    width: 350px;
+    background: #1a1a1a;
+    padding: 20px;
+    border-left: 1px solid #333;
+    overflow-y: auto;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.location {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.controls-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.control-group {
+    flex: 1;
+}
+
+.control-group label {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.dropdown {
+    width: 100%;
+    padding: 10px;
+    background: #333;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lock-btn {
+    background: #333;
+    color: #fff;
+}
+
+.lock-btn:hover {
+    background: #444;
+}
+
+.cancel-btn {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.cancel-btn:hover {
+    background: #c0392b;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.progress-circle {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.timeline-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.timeline-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timeline-btn.start {
+    background: #27ae60;
+    color: white;
+}
+
+.timeline-btn.stop {
+    background: #e74c3c;
+    color: white;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.info-value {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.info-detail {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 15px;
+}
+
+.change-limit-btn {
+    width: 100%;
+    padding: 10px;
+    background: #f39c12;
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.change-limit-btn:hover {
+    background: #e67e22;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .right-sidebar {
+        width: 300px;
+    }
+    
+    .controls-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .left-sidebar {
+        width: 100%;
+        height: 80px;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px;
+    }
+    
+    .nav-icons {
+        flex-direction: row;
+        gap: 10px;
+    }
+    
+    .right-sidebar {
+        width: 100%;
+        height: auto;
+    }
+    
+    .bottom-controls {
+        flex-direction: column;
+        height: auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

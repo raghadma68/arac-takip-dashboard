@@ -1,0 +1,217 @@
+import React, { useState, useEffec from 'react';
+import { Battery, Clock, QrCode, FileText, Zap, AlertTriangle, CheckCircle, XCircle } from 'lucide-react';
+
+const VehicleDashboard = () => {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Örnek veri - gerçek uygulamada API'den gelecek
+  const vehicleData = {
+    id: "ARC-001",
+    qrCode: "QR123456789",
+    batteryPercentage: 75,
+    totalWorkingHours: 1247.5,
+    minChargeLimit: 20,
+    status: "active", // active, charging, maintenance, idle
+    workOrders: [
+      {
+        id: "WO-2024-001",
+        title: "Depo Taşıma Görevi",
+        priority: "Yüksek",
+        assignedTeam: "Takım A",
+        startTime: "09:00",
+        estimatedDuration: "2.5 saat",
+        status: "progress"
+      },
+      {
+        id: "WO-2024-002", 
+        title: "Temizlik Operasyonu",
+        priority: "Orta",
+        assignedTeam: "Takım B",
+        startTime: "14:00",
+        estimatedDuration: "1.5 saat",
+        status: "pending"
+      }
+    ],
+    chargeTeams: [
+      { name: "Teknik Takım 1", status: "available", minChargeReq: 15 },
+      { name: "Teknik Takım 2", status: "busy", minChargeReq: 25 },
+      { name: "Acil Müdahale", status: "available", minChargeReq: 30 }
+    ]
+  };
+
+  const getBatteryColor = (percentage) => {
+    if (percentage > 50) return "text-green-500";
+    if (percentage > 25) return "text-yellow-500";
+    return "text-red-500";
+  };
+
+  const getStatusColor = (status) => {
+    switch(status) {
+      case "active": return "text-green-500";
+      case "charging": return "text-blue-500";
+      case "maintenance": return "text-orange-500";
+      case "idle": return "text-gray-500";
+      default: return "text-gray-500";
+    }
+  };
+
+  const formatWorkingHours = (hours) => {
+    const totalHours = Math.floor(hours);
+    const minutes = Math.floor((hours % 1) * 60);
+    return `${totalHours}s ${minutes}dk`;
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 p-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-white mb-2">Araç Takip Sistemi</h1>
+          <p className="text-blue-200">Gerçek zamanlı araç durumu ve iş emri yönetimi</p>
+          <div className="text-blue-300 text-sm mt-2">
+            Son güncelleme: {currentTime.toLocaleString('tr-TR')}
+          </div>
+        </div>
+
+        {/* Ana Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          
+          {/* Araç Durumu Kartı */}
+          <div className="lg:col-span-1 bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-white">Araç Durumu</h2>
+              <div className={`text-sm px-3 py-1 rounded-full bg-black/20 ${getStatusColor(vehicleData.status)}`}>
+                {vehicleData.status === 'active' ? 'Aktif' : 
+                 vehicleData.status === 'charging' ? 'Şarjda' :
+                 vehicleData.status === 'maintenance' ? 'Bakımda' : 'Beklemede'}
+              </div>
+            </div>
+            
+            {/* QR Kod */}
+            <div className="mb-6 p-4 bg-white/5 rounded-xl">
+              <div className="flex items-center mb-3">
+                <QrCode className="text-blue-400 mr-2" size={24} />
+                <span className="text-white font-semibold">QR Kod Bilgisi</span>
+              </div>
+              <div className="text-blue-200 text-lg font-mono">{vehicleData.qrCode}</div>
+              <div className="text-xs text-gray-400 mt-1">Araç ID: {vehicleData.id}</div>
+            </div>
+
+            {/* Şarj Durumu */}
+            <div className="mb-6 p-4 bg-white/5 rounded-xl">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center">
+                  <Battery className={`mr-2 ${getBatteryColor(vehicleData.batteryPercentage)}`} size={24} />
+                  <span className="text-white font-semibold">Şarj Durumu</span>
+                </div>
+                <span className={`text-2xl font-bold ${getBatteryColor(vehicleData.batteryPercentage)}`}>
+                  %{vehicleData.batteryPercentage}
+                </span>
+              </div>
+              
+              <div className="w-full bg-gray-700 rounded-full h-3 mb-2">
+                <div 
+                  className={`h-3 rounded-full transition-all duration-500 ${
+                    vehicleData.batteryPercentage > 50 ? 'bg-green-500' :
+                    vehicleData.batteryPercentage > 25 ? 'bg-yellow-500' : 'bg-red-500'
+                  }`}
+                  style={{ width: `${vehicleData.batteryPercentage}%` }}
+                ></div>
+              </div>
+              
+              <div className="flex justify-between text-xs text-gray-400">
+                <span>Min: %{vehicleData.minChargeLimit}</span>
+                <span>Max: %100</span>
+              </div>
+            </div>
+
+            {/* Çalışma Süresi */}
+            <div className="p-4 bg-white/5 rounded-xl">
+              <div className="flex items-center mb-3">
+                <Clock className="text-purple-400 mr-2" size={24} />
+                <span className="text-white font-semibold">Toplam Çalışma Süresi</span>
+              </div>
+              <div className="text-purple-200 text-2xl font-bold">
+                {formatWorkingHours(vehicleData.totalWorkingHours)}
+              </div>
+              <div className="text-xs text-gray-400 mt-1">
+                Bu ay: {formatWorkingHours(156.5)}
+              </div>
+            </div>
+          </div>
+
+          {/* İş Emirleri */}
+          <div className="lg:col-span-2 bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-white flex items-center">
+                <FileText className="mr-2" size={28} />
+                İş Emri Detayları
+              </h2>
+              <div className="text-sm text-blue-200">
+                {vehicleData.workOrders.length} aktif görev
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {vehicleData.workOrders.map((order, index) => (
+                <div key={order.id} className="bg-white/5 rounded-xl p-4 border border-white/10">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">{order.title}</h3>
+                      <p className="text-blue-200 text-sm">ID: {order.id}</p>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      {order.status === 'progress' ? (
+                        <div className="flex items-center text-green-400">
+                          <CheckCircle size={16} className="mr-1" />
+                          <span className="text-xs">Devam Ediyor</span>
+                        </div>
+                      ) : (
+                        <div className="flex items-center text-yellow-400">
+                          <Clock size={16} className="mr-1" />
+                          <span className="text-xs">Beklemede</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                    <div>
+                      <span className="text-gray-400">Öncelik:</span>
+                      <p className={`font-medium ${
+                        order.priority === 'Yüksek' ? 'text-red-400' :
+                        order.priority === 'Orta' ? 'text-yellow-400' : 'text-green-400'
+                      }`}>{order.priority}</p>
+                    </div>
+                    <div>
+                      <span className="text-gray-400">Takım:</span>
+                      <p className="text-blue-200 font-medium">{order.assignedTeam}</p>
+                    </div>
+                    <div>
+                      <span className="text-gray-400">Başlangıç:</span>
+                      <p className="text-purple-200 font-medium">{order.startTime}</p>
+                    </div>
+                    <div>
+                      <span className="text-gray-400">Süre:</span>
+                      <p className="text-orange-200 font-medium">{order.estimatedDuration}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Şarj Takımları */}
+        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-white flex items-center">
+              <Zap className="mr-2 text-yellow-400" size={28} />
+              Şarj Görevi Takımları
+            </h2>
+            <div className="text-sm t                  

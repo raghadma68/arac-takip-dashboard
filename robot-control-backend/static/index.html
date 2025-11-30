@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Control Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="left-sidebar">
+            <div class="logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Ccircle cx='25' cy='25' r='20' fill='%23fff'/%3E%3Ctext x='25' y='30' text-anchor='middle' font-size='12' fill='%23000'%3EOKTANT%3C/text%3E%3C/svg%3E" alt="OKTANT">
+            </div>
+            <nav class="nav-icons">
+                <div class="nav-item active">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                </div>
+                <div class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <div class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 7c0-1.1-.9-2-2-2h-3V3c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1v2H7c-1.1 0-2 .9-2 2v1c0 2.55.92 4.63 2.29 6.29.46.56.99 1.08 1.71 1.71l.2.2c.28.28.62.52 1.02.7L12 18.95l1.78-2.05c.4-.18.74-.42 1.02-.7l.2-.2c.72-.63 1.25-1.15 1.71-1.71C18.08 12.63 19 10.55 19 8V7z"/>
+                    </svg>
+                </div>
+                <div class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.07 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+                    </svg>
+                </div>
+                <div class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                    </svg>
+                </div>
+                <div class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                    </svg>
+                </div>
+                <div class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"/>
+                    </svg>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Map Area -->
+            <div class="map-container">
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    LIVE
+                </div>
+                <div class="map-area">
+                    <canvas id="mapCanvas" width="800" height="400"></canvas>
+                </div>
+                <div class="timer">
+                    <span id="hours">1</span>
+                    <span class="separator">:</span>
+                    <span id="minutes">59</span>
+                    <span class="separator">:</span>
+                    <span id="seconds">59</span>
+                    <div class="timer-labels">
+                        <span>Hours</span>
+                        <span>Minutes</span>
+                        <span>Seconds</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Controls -->
+            <div class="bottom-controls">
+                <!-- Speed Gauge -->
+                <div class="gauge-container">
+                    <canvas id="speedGauge" width="200" height="200"></canvas>
+                    <div class="gauge-label">SPEED</div>
+                </div>
+
+                <!-- Radar -->
+                <div class="radar-container">
+                    <canvas id="radarCanvas" width="200" height="200"></canvas>
+                    <div class="gauge-label">RADAR</div>
+                </div>
+
+                <!-- Control Panel -->
+                <div class="control-panel">
+                    <div class="control-grid">
+                        <div class="control-btn">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                            </svg>
+                            <span>AUTO</span>
+                        </div>
+                        <div class="control-btn">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span>alarm sound</span>
+                        </div>
+                        <div class="control-btn">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9.5 6.5v3h-3v-3h3M11 5H5v6h6V5zm-1.5 9.5v3h-3v-3h3M11 13H5v6h6v-6zm6.5-6.5v3h-3v-3h3M19 5h-6v6h6V5zm-6.5 9.5v3h-3v-3h3M13 13h6v6h-6v-6z"/>
+                            </svg>
+                            <span>QRCode Read</span>
+                        </div>
+                        <div class="control-btn">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <span>location</span>
+                        </div>
+                        <div class="control-btn">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z"/>
+                            </svg>
+                            <span>Light</span>
+                        </div>
+                        <div class="control-btn">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                            </svg>
+                            <span>Notifications</span>
+                        </div>
+                    </div>
+                    <div class="main-control">
+                        <div class="joystick" id="joystick">
+                            <div class="joystick-handle"></div>
+                        </div>
+                        <div class="main-buttons">
+                            <button class="main-btn start-btn" id="startBtn">start</button>
+                            <button class="main-btn reset-btn" id="resetBtn">reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <!-- Missions Section -->
+            <div class="section">
+                <h3>Missions</h3>
+                <p class="location">Dumlupınar Üniversitesi, Kütahya, Türkiye</p>
+                <div class="controls-row">
+                    <div class="control-group">
+                        <label>Missions</label>
+                        <select class="dropdown">
+                            <option>MISSION</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Choose control</label>
+                        <select class="dropdown">
+                            <option>AUTO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-row">
+                    <button class="action-btn lock-btn">Lock on</button>
+                    <button class="action-btn cancel-btn">Cancel Lock-on</button>
+                </div>
+            </div>
+
+            <!-- Timeline Section -->
+            <div class="section">
+                <h3>Timeline To Get The Job Done</h3>
+                <div class="progress-container">
+                    <div class="progress-circle">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#333" stroke-width="8"/>
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="#e74c3c" stroke-width="8" 
+                                    stroke-dasharray="314" stroke-dashoffset="28" transform="rotate(-90 60 60)"/>
+                        </svg>
+                        <div class="progress-text">91%</div>
+                    </div>
+                </div>
+                <div class="timeline-buttons">
+                    <button class="timeline-btn start">START</button>
+                    <button class="timeline-btn stop">STOP</button>
+                </div>
+            </div>
+
+            <!-- Robot Information -->
+            <div class="section">
+                <h3>Robot information</h3>
+                <div class="info-row">
+                    <span>Battery Status</span>
+                    <span class="info-value">61%</span>
+                </div>
+                <p class="info-detail">Battery at 20% Plug in to charge</p>
+                <button class="change-limit-btn">Change Limit</button>
+                <div class="info-row">
+                    <span>Heat</span>
+                    <span class="info-value">38%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
