@@ -31,3 +31,28 @@ arac-takip-dashboard/
 ├─ package.json             # Frontend dependencies and scripts
 ├─ craco.config.js          # CRA configuration override (if used)
 └─ README.md                # You are here 🚀
+🛠 Tech Stack
+
+Frontend:
+
+React
+
+JavaScript
+
+HTML, CSS
+
+Backend:
+
+Python (robot-control-backend)
+
+Tools:
+
+Git & GitHub
+
+VS Code
+
+
+🚀 Getting Started
+1️⃣ Clone the repository
+git clone https://github.com/raghadma68/arac-takip-dashboard.git
+cd arac-takip-dashboard
