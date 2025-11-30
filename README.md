@@ -1,23 +1,24 @@
 # 🚗 Arac Takip Dashboard
 
-Web tabanlı bir robot/araç izleme ve kontrol paneli.  
-React tabanlı bir arayüz ve Python tabanlı bir backend ile gerçek zamanlı kontrol, durum görüntüleme ve temiz bir kullanıcı deneyimi sunar.
+A web-based dashboard for monitoring and controlling a robot/vehicle.  
+It includes a **React frontend** and a **Python backend**, providing real-time control, sensor visualization, and a clean user interface.
 
 ---
 
-## 🌟 Özellikler
-- React ile hazırlanmış etkileşimli kontrol paneli  
-- Gerçek zamanlı robot/araç kontrolü  
-- Sensör verilerinin canlı görüntülenmesi  
-- Modern ve duyarlı (responsive) arayüz  
-- Genişletilebilir yapı (harita, log, kamera yayını vb.)
+## 🌟 Features
+• Interactive React dashboard  
+• Real-time robot/vehicle control  
+• Live sensor & telemetry display  
+• Modern and responsive UI  
+• Simple backend API for communication  
+• Easy to extend (maps, logs, camera, WebSocket, etc.)
 
 ---
 
-## 🏗 Proje Yapısı
+## 🏗 Project Structure
 arac-takip-dashboard  
-• public/ (statik dosyalar)  
-• src/ (React kaynak kodu)  
+• public/ (static files)  
+• src/ (React source code)  
   - App.js  
   - App.css  
   - index.js  
@@ -31,65 +32,64 @@ arac-takip-dashboard
 
 ---
 
-# 🚀 Başlangıç (Frontend)
+# 🚀 Frontend Setup (React)
 
-### 1. Depoyu klonla
+### 1. Clone the repository  
 git clone https://github.com/raghadma68/arac-takip-dashboard.git  
 cd arac-takip-dashboard
 
-### 2. Bağımlılıkları yükle
+### 2. Install dependencies  
 npm install
 
-### 3. Uygulamayı başlat
+### 3. Start the React app  
 npm start  
-Uygulama adresi: http://localhost:3000
+Dashboard runs at: http://localhost:3000
 
 ---
 
-# 🐍 Backend (Python)
+# 🐍 Backend Setup (Python)
 
-### 1. Backend klasörüne geç
+### 1. Go to backend folder  
 cd robot-control-backend
 
-### 2. Sanal ortam oluştur
+### 2. Create virtual environment  
 python -m venv venv
 
-### 3. Sanal ortamı aktif et  
+### 3. Activate the environment  
 Windows: venv\Scripts\activate  
 Mac/Linux: source venv/bin/activate
 
-### 4. Gerekli paketleri yükle
+### 4. Install backend requirements  
 pip install -r requirements.txt  
-ya da  
-pip install flask
+or install manually (example): pip install flask
 
-### 5. Backend’i çalıştır
+### 5. Run the backend  
 python main.py  
-Backend adresi: http://localhost:5000
+Backend runs at: http://localhost:5000
 
 ---
 
-# 🔗 Frontend & Backend Bağlantısı
-React içinde kullanılan API linkleri backend adresi ile uyumlu olmalıdır.  
-Örnek: http://localhost:5000/api/command
+# 🔗 Connecting Frontend & Backend
+Make sure the API URLs inside React match your backend URL.  
+Example: http://localhost:5000/api/command
 
 ---
 
-## 📚 Gelecek Geliştirmeler
-- Canlı harita takibi  
-- Joystick kontrolü  
-- Kamera yayını  
-- WebSocket ile gerçek zamanlı veri  
-- Log ve bildirim sistemi  
-- Geliştirilmiş arayüz tasarımı  
+## 📚 Future Improvements
+• Real-time map tracking  
+• Joystick controller  
+• Camera streaming  
+• WebSocket live data  
+• Logs & notifications  
+• Improved UI/UX  
 
 ---
 
-## 👩‍💻 Geliştirici
+## 👩‍💻 Author
 **Ragad Mansour**  
 Software Engineering Student  
-Web geliştirme, robotik ve Arduino ile ilgileniyor.
+Interested in web development, robotics, and Arduino projects.
 
 ---
 
-⭐ Proje hoşuna gittiyse bir yıldız bırakmayı unutma! ⭐
+⭐ If you like this project, give it a star on GitHub! ⭐
