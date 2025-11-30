@@ -1,103 +1,95 @@
 # 🚗 Arac Takip Dashboard
-A web-based dashboard for monitoring and controlling a robot/vehicle.  
-This project includes a React frontend and a Python backend, providing real-time control, sensor data display, and a clean user-friendly interface.
+
+Web tabanlı bir robot/araç izleme ve kontrol paneli.  
+React tabanlı bir arayüz ve Python tabanlı bir backend ile gerçek zamanlı kontrol, durum görüntüleme ve temiz bir kullanıcı deneyimi sunar.
 
 ---
 
-## 🌟 Features
-- Interactive React dashboard UI  
-- Real-time robot/vehicle control panel  
-- Live sensor & telemetry display  
-- Minimal and responsive interface  
-- Simple backend API for hardware communication  
-- Easy to extend (maps, logs, streaming, etc.)
+## 🌟 Özellikler
+- React ile hazırlanmış etkileşimli kontrol paneli  
+- Gerçek zamanlı robot/araç kontrolü  
+- Sensör verilerinin canlı görüntülenmesi  
+- Modern ve duyarlı (responsive) arayüz  
+- Genişletilebilir yapı (harita, log, kamera yayını vb.)
 
 ---
 
-## 🏗 Project Structure
-arac-takip-dashboard/
-- public/  
-- src/  
+## 🏗 Proje Yapısı
+arac-takip-dashboard  
+• public/ (statik dosyalar)  
+• src/ (React kaynak kodu)  
   - App.js  
   - App.css  
   - index.js  
-- robot-control-backend/  
+• robot-control-backend/ (Python backend)  
   - static/  
   - schemas/  
-  - main.py (if used)  
-- package.json  
-- craco.config.js  
-- README.md  
+  - main.py  
+• package.json  
+• craco.config.js  
+• README.md  
 
 ---
 
-# 🚀 Getting Started
+# 🚀 Başlangıç (Frontend)
 
-## 1️⃣ Clone the Repository
+### 1. Depoyu klonla
 git clone https://github.com/raghadma68/arac-takip-dashboard.git  
-cd arac-takip-dashboard  
+cd arac-takip-dashboard
 
----
-
-# 🖥️ Frontend (React) Setup
-
-## 2️⃣ Install Dependencies
+### 2. Bağımlılıkları yükle
 npm install
 
-## 3️⃣ Run the Dashboard
+### 3. Uygulamayı başlat
 npm start  
-Dashboard URL: http://localhost:3000
+Uygulama adresi: http://localhost:3000
 
 ---
 
-# 🐍 Backend (Python) Setup
+# 🐍 Backend (Python)
 
-Folder path: robot-control-backend/
-
-## 1️⃣ Navigate to backend
+### 1. Backend klasörüne geç
 cd robot-control-backend
 
-## 2️⃣ Create virtual environment
+### 2. Sanal ortam oluştur
 python -m venv venv
 
-### Activate (Windows)
-venv\Scripts\activate
+### 3. Sanal ortamı aktif et  
+Windows: venv\Scripts\activate  
+Mac/Linux: source venv/bin/activate
 
-### Activate (Mac/Linux)
-source venv/bin/activate
-
-## 3️⃣ Install backend dependencies
+### 4. Gerekli paketleri yükle
 pip install -r requirements.txt  
-أو  
+ya da  
 pip install flask
 
-## 4️⃣ Run backend
+### 5. Backend’i çalıştır
 python main.py  
-Backend URL: http://localhost:5000
+Backend adresi: http://localhost:5000
 
 ---
 
-# 🔗 Connecting Frontend & Backend
-Make sure API URLs inside React match your backend URL.  
-Example: http://localhost:5000/api/command
+# 🔗 Frontend & Backend Bağlantısı
+React içinde kullanılan API linkleri backend adresi ile uyumlu olmalıdır.  
+Örnek: http://localhost:5000/api/command
 
 ---
 
-## 📚 Future Improvements
-- Add real-time map tracking  
-- Add joystick controller  
-- Add camera streaming  
-- Add WebSocket communication  
-- Add logs & error notifications  
-- Improve UI/UX  
+## 📚 Gelecek Geliştirmeler
+- Canlı harita takibi  
+- Joystick kontrolü  
+- Kamera yayını  
+- WebSocket ile gerçek zamanlı veri  
+- Log ve bildirim sistemi  
+- Geliştirilmiş arayüz tasarımı  
 
 ---
 
-## 👩‍💻 Author
+## 👩‍💻 Geliştirici
 **Ragad Mansour**  
 Software Engineering Student  
-Interested in web development, robotics, Arduino, and building real-world systems.
+Web geliştirme, robotik ve Arduino ile ilgileniyor.
 
 ---
 
-⭐ If you like the project, give it a star on GitHub! ⭐
+⭐ Proje hoşuna gittiyse bir yıldız bırakmayı unutma! ⭐
